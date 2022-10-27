@@ -19,11 +19,11 @@ Juri - PATROCINADORES
 ASSOCIAR, CADASTRAR, CONSULTAR E REMOVER escritorios com CNPJ e razão, após autenticação com um usuario e Senha;
 Deve ter opção para escritorio cadastrar um cliente;
 
-CONSOLIDAÇÃO BANCARIA 
+CONSOLIDAÇÃO BANCARIA - 
 
-FLUXO DE CAIXA DA CONTA BANCO
+FLUXO DE CAIXA DA CONTA BANCO - 
 
-BALANÇO PATRIMONIAL
+BALANÇO PATRIMONIAL - Inventario da empresa - Ativo | Passivo
 ----------------------------
 PLUGGY -  
 
