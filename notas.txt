@@ -1,0 +1,35 @@
+TEMA DO OPEN FINANCE - BANCO CENTRAL
+
+API's da FINTECH PLUGGY - Pega os Dados de Transação
+
+Apoio de comunicação, sistema que pode ter diferentes camadas de Users, e na qual vamos capturar a transação e liberar isto em um dashboard para tanto o escritorio (cuidado com a segurança, logo são logins unicos)
+
+Versão de Banco e API;
+
+Software WEB que disponibiliza consolidação bancaria do cliente após liberação, (Login, Senha) [?Escritoria de Contabilidade?, [Gerente, Contador]];
+
+Software APP que disponibiliza o fluxo de seus caixas na conta (Empresario, Comum);
+
+Empresario = permissão ou não;
+
+Log das Requests() 
+
+Juri - PATROCINADORES
+
+ASSOCIAR, CADASTRAR, CONSULTAR E REMOVER escritorios com CNPJ e razão, após autenticação com um usuario e Senha;
+Deve ter opção para escritorio cadastrar um cliente;
+
+CONSOLIDAÇÃO BANCARIA 
+
+FLUXO DE CAIXA DA CONTA BANCO
+
+BALANÇO PATRIMONIAL
+----------------------------
+PLUGGY -  
+
+MOSTRAR DESPESAS - MOSTRAR VENDAS
+
+EQUIPE - 
+  Aplicação(
+    TokenAcesso
+  )
