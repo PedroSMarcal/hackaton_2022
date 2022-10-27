@@ -12,3 +12,7 @@ type Agency struct {
 	UpdatedAt time.Time
 	DeletedAt gorm.DeletedAt `gorm:"index"`
 }
+
+type AgencyRepository interface {
+	GetAgency(agency Agency) Agency
+}
