@@ -1,47 +1,32 @@
 package database
 
 import (
-	"fmt"
 	"log"
 
 	"github.com/PedroSMarcal/hackaton2022/configs"
-	"gorm.io/driver/mysql"
+	"github.com/PedroSMarcal/hackaton2022/helpers"
+	"github.com/PedroSMarcal/hackaton2022/models"
+	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
 )
 
 var db *gorm.DB
 
-func StartDb(
-	DbUser string,
-	DbPassword string,
-	DbHost string,
-	DbPort string,
-	DbName string,
-) {
-	dsn := fmt.Sprintf("%s:%s@tcp(%s:%s)/%s?charset=utf8mb4&parseTime=True&loc=Local",
-		DbUser,
-		DbPassword,
-		DbHost,
-		DbPort,
-		DbName,
-	)
-	database, err := gorm.Open(mysql.Open(dsn), &gorm.Config{})
+func StartDb() {
+	dsn := helpers.GetFormatedDSN(configs.EnvVariable.Url)
+
+	database, err := gorm.Open(postgres.Open(dsn), &gorm.Config{})
 	if err != nil {
 		log.Fatal(err.Error())
 	}
 
 	db = database
 
+	db.AutoMigrate(&models.Agency{})
 }
 
 func OpenConnection() *gorm.DB {
-	StartDb(
-		configs.EnvVariable.DbUser,
-		configs.EnvVariable.DbPassword,
-		configs.EnvVariable.DbHost,
-		configs.EnvVariable.DbPort,
-		configs.EnvVariable.DbName,
-	)
+	StartDb()
 
 	return db
 }

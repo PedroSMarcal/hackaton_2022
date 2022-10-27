@@ -1,7 +1,10 @@
 package main
 
-import "fmt"
+import (
+	"github.com/PedroSMarcal/hackaton2022/configs"
+)
 
 func main() {
-	fmt.Print("Hello World")
+	configs.GetEnvironmentVariables()
+
 }
