@@ -6,8 +6,23 @@ import (
 	"github.com/PedroSMarcal/hackaton2022/configs"
 )
 
-func Start() {
-	mux := http.NewServeMux()
+func start() *http.ServeMux {
+	// mux := http.NewServeMux()
+	mux := http.ServeMux{}
 
-	http.ListenAndServe(configs.EnvVariable.Port, mux)
+	return &mux
+}
+
+func setRoutes(mux *http.ServeMux) {
+	agency := NewAgencyHandler()
+
+	mux.HandleFunc("/health", agency.hello)
+}
+
+func Run() {
+	mux := start()
+
+	setRoutes(mux)
+
+	http.ListenAndServe(":"+configs.EnvVariable.Port, mux)
 }

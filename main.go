@@ -8,5 +8,5 @@ import (
 func main() {
 	configs.GetEnvironmentVariables()
 
-	controllers.Start()
+	controllers.Run()
 }
