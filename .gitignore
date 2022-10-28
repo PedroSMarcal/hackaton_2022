@@ -23,3 +23,6 @@ go.work
 
 # Go Enviroments
 .env
+
+#Docker Files
+docker-compose.yml
