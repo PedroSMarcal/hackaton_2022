@@ -43,11 +43,15 @@ func (l *handlerLogin) LoginHandler(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		w.WriteHeader(http.StatusUnauthorized)
 		io.WriteString(w, "invalid user")
+		return
 	}
 
-	if service.Login(credentials.User, credentials.Password) {
+	valid := service.Login(credentials.User, credentials.Password)
+
+	if !valid {
 		w.WriteHeader(http.StatusUnauthorized)
 		io.WriteString(w, "invalid user")
+		return
 	}
 
 	w.WriteHeader(http.StatusOK)
