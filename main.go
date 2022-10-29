@@ -2,11 +2,12 @@ package main
 
 import (
 	"github.com/PedroSMarcal/hackaton2022/configs"
-	"github.com/PedroSMarcal/hackaton2022/controllers"
+	"github.com/PedroSMarcal/hackaton2022/repository/database"
 )
 
 func main() {
 	configs.GetEnvironmentVariables()
 
-	controllers.Run()
+	database.StartDb()
+	// controllers.Run()
 }

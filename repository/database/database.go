@@ -23,6 +23,8 @@ func StartDb() {
 	db = database
 
 	db.AutoMigrate(&models.Agency{})
+	db.AutoMigrate(&models.Accounts{})
+	db.AutoMigrate(&models.Entrepeneur{})
 }
 
 func OpenConnection() *gorm.DB {
