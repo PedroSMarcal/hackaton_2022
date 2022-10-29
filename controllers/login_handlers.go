@@ -23,6 +23,12 @@ func NewLoginHandler() *handlerLogin {
 }
 
 func (l *handlerLogin) LoginHandler(w http.ResponseWriter, r *http.Request) {
+	allowedHeaders := "Accept, Content-Type, Content-Length, Accept-Encoding, Authorization,X-CSRF-Token"
+	w.Header().Set("Access-Control-Allow-Origin", "*")
+	w.Header().Set("Access-Control-Allow-Methods", "GET, OPTIONS, PUT")
+	w.Header().Set("Access-Control-Allow-Headers", allowedHeaders)
+	w.Header().Set("Access-Control-Expose-Headers", "Authorization")
+
 	credentials := models.Login{}
 
 	values, _ := io.ReadAll(r.Body)
