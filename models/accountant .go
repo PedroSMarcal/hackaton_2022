@@ -7,8 +7,12 @@ import (
 )
 
 type Accounts struct {
-	ID        uint `gorm:"primaryKey"`
-	CreatedAt time.Time
-	UpdatedAt time.Time
-	DeletedAt gorm.DeletedAt `gorm:"index"`
+	ID          uint `gorm:"primaryKey"`
+	AgencyID    uint
+	Name        string
+	Email       string
+	Entrepeneur []Entrepeneur `gorm:"foreignKey:EntrepeneurID"`
+	CreatedAt   time.Time
+	UpdatedAt   time.Time
+	DeletedAt   gorm.DeletedAt `gorm:"index"`
 }
