@@ -30,6 +30,11 @@ func (l *handlerLogin) LoginHandler(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Access-Control-Allow-Headers", allowedHeaders)
 	w.Header().Set("Access-Control-Expose-Headers", "Authorization")
 
+	if r.Method == http.MethodOptions {
+		w.WriteHeader(http.StatusAccepted)
+		io.WriteString(w, "Ok")
+	}
+
 	credentials := models.Login{}
 
 	values, _ := io.ReadAll(r.Body)
