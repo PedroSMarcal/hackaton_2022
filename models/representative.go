@@ -12,8 +12,6 @@ type Representative struct {
 	CNPJ         string
 	SocialReason string
 	Credencials  Credencials
-	AgencyID     uint
-	Agency       Agency `gorm:"foreignKey:AgencyID"`
 	CreatedAt    time.Time
 	UpdatedAt    time.Time
 	DeletedAt    gorm.DeletedAt `gorm:"index"`
