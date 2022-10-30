@@ -3,12 +3,13 @@ package helpers
 import (
 	"fmt"
 	"strings"
-
-	"github.com/PedroSMarcal/hackaton2022/common"
 )
 
 func ValidateAuthorizationToken(str string) bool {
-	return str == common.Token
+	if str == "admin" || str == "agency" {
+		return true
+	}
+	return false
 }
 
 func ValidateEmptyString(str string) bool {
