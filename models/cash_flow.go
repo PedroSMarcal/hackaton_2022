@@ -5,5 +5,9 @@ import (
 )
 
 type CashFlow struct {
-	Data time.Time
+	Data    time.Time
+	Account interface{}
+	Amount  float64
+	Entry   float64
+	Out     float64
 }

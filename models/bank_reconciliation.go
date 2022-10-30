@@ -7,8 +7,8 @@ import (
 type BankReconciliation struct {
 	Date          time.Time
 	OperationTipe string
-	Entry         bool
-	Category      string
+	Entry         string
+	Category      interface{}
 	Description   string
 	CpfCnpj       string
 	Value         float64

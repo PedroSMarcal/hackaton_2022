@@ -95,7 +95,6 @@ func GetItens() error {
 	response := responses.ItemsResponse{}
 	err := json.Unmarshal(body, &response)
 	if err != nil {
-		fmt.Print(err)
 		return err
 	}
 
@@ -123,7 +122,6 @@ func GetAccount() error {
 	response := responses.AccountResponse{}
 	err := json.Unmarshal(body, &response)
 	if err != nil {
-		fmt.Print(err)
 		return err
 	}
 
@@ -140,14 +138,10 @@ func GetTransaction(transaction *responses.TransactionResponse) error {
 
 	url := fmt.Sprintf("https://api.pluggy.ai/transactions?accountId=%s", common.AccountKey)
 
-	fmt.Println(&url)
-
 	req, _ := http.NewRequest("GET", url, nil)
 
 	req.Header.Add("accept", "application/json")
 	req.Header.Add("X-API-KEY", common.ApiKey)
-
-	fmt.Println(common.ApiKey)
 
 	res, _ := http.DefaultClient.Do(req)
 
@@ -156,7 +150,6 @@ func GetTransaction(transaction *responses.TransactionResponse) error {
 
 	err := json.Unmarshal(body, &transaction)
 	if err != nil {
-		fmt.Print(err)
 		return err
 	}
 

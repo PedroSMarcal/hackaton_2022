@@ -8,18 +8,11 @@ import (
 )
 
 func ValidateAuthorizationToken(str string) bool {
-	if str != common.Token {
-		return false
-	}
-
-	return true
+	return str == common.Token
 }
 
 func ValidateEmptyString(str string) bool {
-	if str != "" {
-		return true
-	}
-	return false
+	return str == ""
 }
 
 func GetFormatedDSN(dsn string) string {
