@@ -23,7 +23,7 @@ func PostRepresentative(representative *models.Representative) error {
 	return db.Create(&representative).Error
 }
 
-func GetRepresentative(representative *models.Representative) error {
+func GetRepresentative(representative *[]models.Representative) error {
 	db := database.OpenConnection()
 
 	return db.Find(&representative).Error

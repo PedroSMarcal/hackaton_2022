@@ -127,7 +127,7 @@ func (a *entrepenneurHandler) representativeGet(w http.ResponseWriter, r *http.R
 			return
 		}
 
-		representative := &models.Representative{}
+		representative := &[]models.Representative{}
 
 		err := repository.GetRepresentative(representative)
 		if err != nil {
