@@ -8,7 +8,6 @@ import (
 func main() {
 	configs.GetEnvironmentVariables()
 
-	// database.StartDb()
-
+	// database.OpenConnection()
 	controllers.Run()
 }

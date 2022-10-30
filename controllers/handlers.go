@@ -18,9 +18,16 @@ func setRoutes(mux *http.ServeMux) {
 	login := NewLoginHandler()
 	entrepeneur := NewEntrepeneurHandler()
 
+	mux.HandleFunc("/entrepeneur", entrepeneur.get)
+	mux.HandleFunc("/representative/create", agency.postRepresentative)
+
 	mux.HandleFunc("/agency/bankreconciliation", agency.sendBankReconciliation)
+	mux.HandleFunc("/agency/create", agency.postAgency)
+	mux.HandleFunc("/agency/", agency.postAgency)
 
 	mux.HandleFunc("/entrepeneur/cashflow", entrepeneur.cashFlow)
+	mux.HandleFunc("/entrepeneur/create", entrepeneur.cashFlow)
+	mux.HandleFunc("/entrepeneur/", entrepeneur.cashFlow)
 
 	mux.HandleFunc("/login", login.LoginAgencyHandler)
 

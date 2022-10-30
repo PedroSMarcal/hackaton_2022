@@ -5,7 +5,6 @@ import (
 
 	"github.com/PedroSMarcal/hackaton2022/configs"
 	"github.com/PedroSMarcal/hackaton2022/helpers"
-	"github.com/PedroSMarcal/hackaton2022/models"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
 )
@@ -22,11 +21,13 @@ func StartDb() {
 
 	db = database
 
-	db.AutoMigrate(&models.Transaction{}, &models.Representative{}, &models.Entrepeneur{}, &models.Association{})
+	// db.AutoMigrate(&	models.Transaction{}, &models.Representative{}, &models.Entrepeneur{}, &models.Association{}, &models.Agency{})
 }
 
 func OpenConnection() *gorm.DB {
-	StartDb()
+	if db == nil {
+		StartDb()
+	}
 
 	return db
 }
