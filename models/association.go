@@ -6,7 +6,6 @@ import (
 	"gorm.io/gorm"
 )
 
-// OK
 type Association struct {
 	ID           uint `gorm:"primaryKey"`
 	CNPJ         string

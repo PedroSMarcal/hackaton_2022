@@ -11,8 +11,8 @@ type Representative struct {
 	Email        string
 	CNPJ         string
 	SocialReason string
-	User         string
-	Password     string
+	Credencials  Credencials
+	AgencyID     uint
 	Agency       Agency `gorm:"foreignKey:AgencyID"`
 	CreatedAt    time.Time
 	UpdatedAt    time.Time

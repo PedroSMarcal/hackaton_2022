@@ -22,7 +22,7 @@ func NewLoginHandler() *handlerLogin {
 	return &handlerLogin{}
 }
 
-func (l *handlerLogin) LoginHandler(w http.ResponseWriter, r *http.Request) {
+func (l *handlerLogin) LoginAgencyHandler(w http.ResponseWriter, r *http.Request) {
 
 	allowedHeaders := "Accept, Content-Type, Content-Length, Accept-Encoding, Authorization,X-CSRF-Token"
 	w.Header().Set("Access-Control-Allow-Origin", "*")
@@ -48,12 +48,12 @@ func (l *handlerLogin) LoginHandler(w http.ResponseWriter, r *http.Request) {
 
 	valid := service.Login(credentials.User, credentials.Password)
 
-	if !valid {
+	if valid == "" {
 		w.WriteHeader(http.StatusUnauthorized)
 		io.WriteString(w, "invalid user")
 		return
 	}
 
 	w.WriteHeader(http.StatusOK)
-	io.WriteString(w, "bbad700841c8f8568dc3d46d737bb24a7752aa348b6fd26aaee2d178f177a532")
+	io.WriteString(w, valid)
 }

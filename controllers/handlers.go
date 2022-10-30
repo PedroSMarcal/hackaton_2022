@@ -22,7 +22,7 @@ func setRoutes(mux *http.ServeMux) {
 
 	mux.HandleFunc("/entrepeneur/cashflow", entrepeneur.cashFlow)
 
-	mux.HandleFunc("/login", login.LoginHandler)
+	mux.HandleFunc("/login", login.LoginAgencyHandler)
 
 	mux.HandleFunc("/health", agency.hello)
 }

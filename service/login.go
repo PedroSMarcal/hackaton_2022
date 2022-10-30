@@ -1,25 +1,12 @@
 package service
 
-func CheckUser(user string) bool {
-	if user == "user" {
-		return true
+func Login(user, password string) string {
+	if user == "user-admin" || password == "password-admin" {
+		return "admin"
 	}
 
-	return false
-}
-
-func CheckPassword(password string) bool {
-	if password == "password" {
-		return true
+	if user == "user" || password == "password" {
+		return "agency"
 	}
-
-	return false
-}
-
-func Login(user, password string) bool {
-	if CheckPassword(password) == true && CheckUser(user) {
-		return true
-	}
-
-	return false
+	return ""
 }
