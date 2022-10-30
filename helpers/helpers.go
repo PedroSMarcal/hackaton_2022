@@ -3,7 +3,24 @@ package helpers
 import (
 	"fmt"
 	"strings"
+
+	"github.com/PedroSMarcal/hackaton2022/common"
 )
+
+func ValidateAuthorizationToken(str string) bool {
+	if str != common.Token {
+		return false
+	}
+
+	return true
+}
+
+func ValidateEmptyString(str string) bool {
+	if str != "" {
+		return true
+	}
+	return false
+}
 
 func GetFormatedDSN(dsn string) string {
 	credentials := getCredentialsFromDSN(dsn)

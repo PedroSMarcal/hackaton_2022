@@ -7,13 +7,14 @@ import (
 )
 
 type Agency struct {
-	ID          uint `gorm:"primaryKey"`
-	CNPJ        uint
-	RazaoSocial uint
-	Accounts    []Accounts `gorm:"foreignKey:AccountsID"`
-	CreatedAt   time.Time
-	UpdatedAt   time.Time
-	DeletedAt   gorm.DeletedAt `gorm:"index"`
+	ID            uint `gorm:"primaryKey"`
+	CNPJ          uint
+	RazaoSocial   uint
+	EntrepeneurID uint
+	Entrepeneur   []Entrepeneur `gorm:"foreignKey:EntrepeneurID"`
+	CreatedAt     time.Time
+	UpdatedAt     time.Time
+	DeletedAt     gorm.DeletedAt `gorm:"index"`
 }
 
 type AgencyRepository interface {

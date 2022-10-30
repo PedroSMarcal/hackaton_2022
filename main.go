@@ -8,7 +8,7 @@ import (
 func main() {
 	configs.GetEnvironmentVariables()
 
-	// adapters.GetAPPEnv()
 	// database.StartDb()
+
 	controllers.Run()
 }

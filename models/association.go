@@ -6,8 +6,9 @@ import (
 	"gorm.io/gorm"
 )
 
+// OK
 type Association struct {
-	ID           uint
+	ID           uint `gorm:"primaryKey"`
 	CNPJ         string
 	SocialReason string
 	User         string

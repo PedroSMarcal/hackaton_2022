@@ -17,6 +17,8 @@ func setRoutes(mux *http.ServeMux) {
 	agency := NewAgencyHandler()
 	login := NewLoginHandler()
 
+	mux.HandleFunc("/agency/bankreconciliation", agency.sendBankReconciliation)
+
 	mux.HandleFunc("/login", login.LoginHandler)
 
 	mux.HandleFunc("/health", agency.hello)
