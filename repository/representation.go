@@ -40,3 +40,15 @@ func GetByRepresentative(association *models.Association) error {
 
 	return db.Find(&association).Error
 }
+
+func PostEntrepeteurs(entrepeneur *models.Entrepeneur) error {
+	db := database.OpenConnection()
+
+	return db.Create(&entrepeneur).Error
+}
+
+func GetEntrepeteurs(entrepeneur *models.Entrepeneur) error {
+	db := database.OpenConnection()
+
+	return db.Find(&entrepeneur).Error
+}

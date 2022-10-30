@@ -13,7 +13,7 @@ type Entrepeneur struct {
 	Login          string `json:"login"`
 	Senha          string `json:"senha"`
 	Permission     bool   `json:"permission"`
-	AgencyID       uint
+	AgencyID       uint   `json:"agency_id"`
 	Agency         Agency `gorm:"foreignKey:AgencyID"`
 	TimePermission time.Time
 	CreatedAt      time.Time

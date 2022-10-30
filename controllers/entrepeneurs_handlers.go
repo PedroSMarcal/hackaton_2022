@@ -84,7 +84,7 @@ func (a *entrepenneurHandler) get(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 
-		entrepeneur := &models.Entrepeneur{}
+		entrepeneur := &[]models.Entrepeneur{}
 
 		err := repository.GetAllEntrepeneur(entrepeneur)
 		if err != nil {
@@ -138,6 +138,101 @@ func (a *entrepenneurHandler) representativeGet(w http.ResponseWriter, r *http.R
 
 		w.WriteHeader(http.StatusOK)
 		json.NewEncoder(w).Encode(&representative)
+
+	case http.MethodOptions:
+		w.WriteHeader(http.StatusAccepted)
+		io.WriteString(w, "Bem Vindo")
+		return
+
+	default:
+		w.WriteHeader(http.StatusMethodNotAllowed)
+		io.WriteString(w, "Not Allowed")
+		return
+	}
+}
+
+func (a *entrepenneurHandler) entrepeteursGet(w http.ResponseWriter, r *http.Request) {
+	allowedHeaders := "Accept, Content-Type, Content-Length, Accept-Encoding, Authorization,X-CSRF-Token"
+	w.Header().Set("Access-Control-Allow-Origin", "*")
+	w.Header().Set("Access-Control-Allow-Methods", "POST, GET, OPTIONS, PUT, DELETE, OPTIONS")
+	w.Header().Set("Access-Control-Allow-Headers", allowedHeaders)
+	w.Header().Set("Access-Control-Expose-Headers", "Authorization")
+
+	switch r.Method {
+	case http.MethodGet:
+		values := r.URL.Query()
+		token := values.Get("Authorization")
+
+		valid := helpers.ValidateAuthorizationToken(token)
+		if !valid {
+			w.WriteHeader(http.StatusUnauthorized)
+			io.WriteString(w, "invalid user")
+			return
+		}
+
+		entrepeneur := &[]models.Entrepeneur{}
+
+		err := repository.GetAllEntrepeneur(entrepeneur)
+		if err != nil {
+			w.WriteHeader(http.StatusUnauthorized)
+			io.WriteString(w, "invalid user")
+			return
+		}
+
+		w.WriteHeader(http.StatusOK)
+		json.NewEncoder(w).Encode(&entrepeneur)
+
+	case http.MethodOptions:
+		w.WriteHeader(http.StatusAccepted)
+		io.WriteString(w, "Bem Vindo")
+		return
+
+	default:
+		w.WriteHeader(http.StatusMethodNotAllowed)
+		io.WriteString(w, "Not Allowed")
+		return
+	}
+}
+
+func (a *agencyHandler) postEntrepeteurs(w http.ResponseWriter, r *http.Request) {
+	allowedHeaders := "Accept, Content-Type, Content-Length, Accept-Encoding, Authorization,X-CSRF-Token"
+	w.Header().Set("Access-Control-Allow-Origin", "*")
+	w.Header().Set("Access-Control-Allow-Methods", "POST, GET, OPTIONS, PUT, DELETE, OPTIONS")
+	w.Header().Set("Access-Control-Allow-Headers", allowedHeaders)
+	w.Header().Set("Access-Control-Expose-Headers", "Authorization")
+
+	switch r.Method {
+	case http.MethodPost:
+		values := r.URL.Query()
+		token := values.Get("Authorization")
+
+		valid := helpers.ValidateAuthorizationToken(token)
+		if !valid {
+			w.WriteHeader(http.StatusUnauthorized)
+			io.WriteString(w, "invalid user")
+			return
+		}
+
+		entrepeneur := models.Entrepeneur{}
+
+		value, err := io.ReadAll(r.Body)
+		if err != nil {
+			w.WriteHeader(http.StatusUnauthorized)
+			io.WriteString(w, "invalid user")
+			return
+		}
+
+		json.Unmarshal(value, &entrepeneur)
+
+		err = repository.PostEntrepeteurs(&entrepeneur)
+		if err != nil {
+			w.WriteHeader(http.StatusUnauthorized)
+			io.WriteString(w, "falha ao criar usuario")
+			return
+		}
+
+		w.WriteHeader(http.StatusOK)
+		json.NewEncoder(w).Encode(&entrepeneur)
 
 	case http.MethodOptions:
 		w.WriteHeader(http.StatusAccepted)

@@ -5,7 +5,7 @@ import (
 	"github.com/PedroSMarcal/hackaton2022/repository/database"
 )
 
-func GetAllEntrepeneur(entrepeneur *models.Entrepeneur) error {
+func GetAllEntrepeneur(entrepeneur *[]models.Entrepeneur) error {
 	db := database.OpenConnection()
 
 	err := db.Find(&entrepeneur).Error
