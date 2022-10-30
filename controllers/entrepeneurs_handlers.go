@@ -5,7 +5,7 @@ import (
 	"io"
 	"net/http"
 
-	"github.com/PedroSMarcal/hackaton2022/models"
+	"github.com/PedroSMarcal/hackaton2022/helpers"
 	"github.com/PedroSMarcal/hackaton2022/service"
 )
 
@@ -30,20 +30,11 @@ func (a *entrepenneurHandler) cashFlow(w http.ResponseWriter, r *http.Request) {
 
 	switch r.Method {
 	case http.MethodGet:
-		credentials := models.Login{}
+		values := r.URL.Query()
+		token := values.Get("Authorization")
 
-		values, _ := io.ReadAll(r.Body)
-
-		err := json.Unmarshal(values, &credentials)
-		if err != nil {
-			w.WriteHeader(http.StatusUnauthorized)
-			io.WriteString(w, "invalid user")
-			return
-		}
-
-		valid := service.Login(credentials.User, credentials.Password)
-
-		if valid == "" {
+		valid := helpers.ValidateAuthorizationToken(token)
+		if !valid {
 			w.WriteHeader(http.StatusUnauthorized)
 			io.WriteString(w, "invalid user")
 			return
